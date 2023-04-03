@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Use Playwright to test graphQL",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test-graphql": "cross-env test_env=prod npx playwright test --config=playwright.config.ts --project=graphql"
+    "test-graphql": "cross-env test_env=prod npx playwright test --config=playwright.newconfig.ts --project=graphql",
+    "test-new": "cross-env test_env=prod npx playwright test --config=playwright.config.ts --project=graphql"
   },
   "repository": {
     "type": "git",

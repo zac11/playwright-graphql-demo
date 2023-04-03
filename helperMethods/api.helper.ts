@@ -121,5 +121,12 @@ export class GrapQLService {
     expect(responseJSON.data.deleteTea).toBe(true);
   }
 
-  
+}
+
+export async function assert(assertionName:any, expectedData: any, actualData: any) {
+      let EXP = await expectedData.toString();
+      let ACT = await actualData.toString();
+
+      expect(EXP).toEqual(ACT);
+      console.log(color.success(`\n$$$$$$$$$$  ASSERTION PASSED [${assertionName}]: response data contains [${actualData}] & equals [${expectedData}] $$$$$$$$$$`));
 }
