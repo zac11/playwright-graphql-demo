@@ -1,7 +1,10 @@
+
 import { expect, request } from "@playwright/test";
-import { color } from "./common.helper";
-import ENV from "../utils/env";
-let prettyjson = require("prettyjson");
+//@ts-ignore
+import { color } from "./common.helper.ts";
+//@ts-ignore
+import ENV from "../utils/env.ts";
+import prettyjson from "prettyjson";
 
 const URL = ENV.BASE_URL as string;
 
@@ -22,22 +25,40 @@ export class GrapQLService {
     console.log(color.response(`\n RESPONSE DATA \n`, prettyjson.render(data)));
   }
 
-  async getAllTeas() {
+//   async getAllTeas() {
+//     const api = await request.newContext();
+//     const query = "{teas {id, name} }"; // query to hit the graphql engine
+//     const data = {
+//       query: query,
+//     };
+
+//     this.logRequestAPI(URL, data); // log the request sent
+
+//     const response = await api.post(URL, { data });
+//     const responseStatus = response.status();
+//     const responseJSON = await response.json();
+
+//     this.logResponseAPI(responseStatus, responseJSON); // log the respons recieved
+//     expect(responseStatus).toEqual(200);
+//   }
+
+async getAllTeas() {
     const api = await request.newContext();
-    const query = "{teas {id, name} }"; // query to hit the graphql engine
+    const query = "{ teas { id, name} }";
     const data = {
-      query: query,
+      query: query
     };
 
-    this.logRequestAPI(URL, data); // log the request sent
+    this.logRequestAPI(URL, data);
 
-    const response = await api.post(URL, { data });
-    const responseStatus = response.status();
-    const responseJSON = await response.json();
+    const response = await api.post(URL, { data});
+    const status = response.status();
+    const respJson = await response.json();
+  
+    this.logResponseAPI(status, respJson);
 
-    this.logResponseAPI(responseStatus, responseJSON); // log the respons recieved
-    expect(responseStatus).toEqual(200);
-  }
+    expect(status).toEqual(200);
+  };
 
   async addNewTea(newTea: any, teaPrice: any) {
     const api = await request.newContext();

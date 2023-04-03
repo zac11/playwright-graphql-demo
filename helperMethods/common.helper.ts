@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-const chalk = require('chalk');
+import chalk  from "chalk";
 
 
 

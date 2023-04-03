@@ -1,5 +1,10 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * Read environment variables from file.
@@ -10,9 +15,9 @@ import { devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig = {
-    globalSetup: './utils/globalSetup.ts',
-  testDir: './tests',
+const newconfig: PlaywrightTestConfig = {
+ globalSetup: 'utils/globalSetup.ts',
+  testDir: '/tests',
   timeout: 50 * 1000,
   expect: {
     /**
@@ -36,7 +41,7 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
             name: 'graphql',
-            testMatch: ['./tests/graphql.spec.ts']
+            testMatch: '**/graphql.spec.ts'
           
     },
   ],
@@ -45,4 +50,4 @@ const config: PlaywrightTestConfig = {
    outputDir: 'test-results/',
 };
 
-export default config;
+export default newconfig;

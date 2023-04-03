@@ -1,34 +1,28 @@
-
-import type { PlaywrightTestConfig } from "@playwright/test";
+// @ts-check
+import type { PlaywrightTestConfig } from '@playwright/test';
 import path from 'path';
-
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
 
 /**
- * See https://playwright.dev/docs/test-configuration.
- * 
+ * @see https://playwright.dev/docs/test-configuration
+ * @type {import('@playwright/test').PlaywrightTestConfig}
  */
-
- const config: PlaywrightTestConfig = {
-  globalSetup: 'utils/globalSetup.ts',
+const config: PlaywrightTestConfig = {
+  globalSetup: './utils/globalSetup.ts',
   projects: [
     {
       name: 'graphql',
-      testMatch: ['/tests/graphql.spec.ts']
+      //testMatch: ['/tests/graphql.spec.ts']
+      testMatch: /graphql\.spec\.ts$/
     },
   ],
   timeout: 30 * 1000,
-  testDir: path.join(__dirname, 'tests'),
-  retries: 1,
+  testDir: './tests',
+  retries: 0,
   outputDir: 'test-results/',
   use: {
     trace: 'on',
