@@ -1,8 +1,8 @@
-//@ts-ignore
+
 import {test} from '../fixtures/env_name.ts';
 
 import { faker } from '@faker-js/faker'
-//@ts-ignore
+
 import { GrapQLService } from "../helperMethods/api.helper.ts";
 
 const newTea = faker.random.word();

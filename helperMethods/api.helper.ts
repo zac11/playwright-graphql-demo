@@ -1,8 +1,8 @@
 
 import { expect, request } from "@playwright/test";
-//@ts-ignore
+
 import { color } from "./common.helper.ts";
-//@ts-ignore
+
 import ENV from "../utils/env.ts";
 import prettyjson from "prettyjson";
 

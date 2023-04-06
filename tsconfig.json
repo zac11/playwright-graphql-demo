@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {      
+        "allowImportingTsExtensions": true,
+            "moduleResolution": "node",
+            "noEmit": true,
+            "include": ["**/*.ts", "**/*.tsx"],
+            "exclude": ["node_modules"]
+    }
+}
